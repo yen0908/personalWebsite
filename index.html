@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ec">
+  <meta name="description" content="黃柏諺（Po-Yen Huang）的個人網站。以資訊管理、數據分析與產品思維，將資料轉化為清晰可行的洞察。">
+  <title>黃柏諺 Po-Yen Huang — 個人網站</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f2ec;
+      --white: #fffefa;
+      --ink: #192a27;
+      --muted: #69736c;
+      --line: #dcded5;
+      --green: #315e4d;
+      --lime: #d5e47a;
+      --serif: "Iowan Old Style", "Palatino Linotype", "Noto Serif TC", Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
+    .topbar {
+      display: flex;
+      height: 88px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .wordmark span { margin-left: 10px; color: var(--muted); font-weight: 400; letter-spacing: .04em; }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a {
+      color: #43524b;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    nav a:hover { color: var(--green); }
+    .nav-contact {
+      padding: 11px 17px;
+      border: 1px solid var(--ink);
+      border-radius: 99px;
+      color: var(--ink);
+    }
+    .hero {
+      display: grid;
+      min-height: 620px;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 64px;
+      padding-block: 66px 78px;
+    }
+    .eyebrow, .section-kicker {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 25px 0 14px;
+      font-family: var(--serif);
+      font-size: clamp(54px, 7vw, 84px);
+      font-weight: 500;
+      letter-spacing: .045em;
+      line-height: 1.12;
+    }
+    .hero h1 span {
+      display: block;
+      margin-top: 15px;
+      color: #69776f;
+      font-family: var(--sans);
+      font-size: clamp(19px, 2.5vw, 27px);
+      font-weight: 400;
+      letter-spacing: .13em;
+    }
+    .hero-copy {
+      max-width: 470px;
+      margin: 30px 0 0;
+      color: #59665f;
+      font-size: 15px;
+      line-height: 2;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      min-height: 47px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 19px;
+      border: 1px solid var(--ink);
+      border-radius: 99px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--ink); color: white; }
+    .button-primary:hover { background: var(--green); }
+    .button-quiet { border-color: var(--line); }
+    .button-quiet:hover { background: var(--white); }
+    .hero-visual {
+      position: relative;
+      width: min(100%, 420px);
+      justify-self: end;
+      padding: 18px;
+      background: #e5e6de;
+    }
+    .hero-visual::before {
+      position: absolute;
+      z-index: -1;
+      top: -18px;
+      right: -18px;
+      width: 68%;
+      height: 70%;
+      background: var(--lime);
+      content: "";
+    }
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: 490px;
+      object-fit: cover;
+      object-position: center 28%;
+      filter: saturate(.76);
+    }
+    .image-caption {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 2px 0;
+      color: #56645b;
+      font-size: 10px;
+      letter-spacing: .13em;
+    }
+    .intro-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .intro-item { padding: 23px 24px 23px 0; }
+    .intro-item + .intro-item { padding-left: 27px; border-left: 1px solid var(--line); }
+    .intro-item strong { display: block; font-family: var(--serif); font-size: 23px; font-weight: 500; }
+    .intro-item span { display: block; margin-top: 7px; color: var(--muted); font-size: 11px; letter-spacing: .08em; }
+    section.content-section { padding-block: 104px; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 48px;
+      margin-bottom: 46px;
+    }
+    .section-heading h2 {
+      margin: 10px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 500;
+      letter-spacing: .03em;
+    }
+    .section-heading p { max-width: 510px; margin: 24px 0 0; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 330px;
+      background: var(--ink);
+      color: #f7f7ef;
+    }
+    .project-info { padding: 42px 48px; }
+    .project-meta { color: #c9d397; font-size: 11px; letter-spacing: .16em; }
+    .project-info h3 { max-width: 460px; margin: 20px 0 15px; font-family: var(--serif); font-size: clamp(28px, 3.5vw, 39px); font-weight: 500; line-height: 1.35; }
+    .project-info p { max-width: 475px; color: #ccd2ca; font-size: 13px; line-height: 1.9; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+    .project-tags span { padding: 7px 10px; border: 1px solid #596761; border-radius: 99px; color: #e2e6dc; font-size: 10px; }
+    .project-art {
+      position: relative;
+      display: grid;
+      min-height: 330px;
+      overflow: hidden;
+      place-items: center;
+      background: #d6e07d;
+      color: var(--ink);
+    }
+    .project-art::before, .project-art::after {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(25, 42, 39, .22);
+      border-radius: 50%;
+      content: "";
+    }
+    .project-art::after { width: 390px; height: 390px; }
+    .map-card {
+      position: relative;
+      z-index: 1;
+      width: 225px;
+      padding: 19px;
+      background: var(--white);
+      box-shadow: 0 18px 50px rgba(25, 42, 39, .15);
+      transform: rotate(-4deg);
+    }
+    .map-label { color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+    .map-card strong { display: block; margin-top: 7px; font-family: var(--serif); font-size: 20px; font-weight: 500; }
+    .map-line { position: relative; height: 78px; margin-top: 13px; border-top: 1px solid #e4e6dd; border-bottom: 1px solid #e4e6dd; }
+    .map-line svg { width: 100%; height: 100%; }
+    .map-foot { display: flex; justify-content: space-between; margin-top: 10px; color: #778178; font-size: 9px; }
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 30px;
+      gap: 28px;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline-date { padding-top: 4px; color: var(--green); font-size: 11px; letter-spacing: .08em; }
+    .timeline-row h3 { margin: 0; font-size: 16px; font-weight: 600; }
+    .timeline-row p { margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .timeline-mark { color: #a0aa9f; font-family: var(--serif); font-size: 19px; }
+    .experience-section { background: var(--white); }
+    .experience-section .shell { padding-block: 100px; }
+    .experience-section.content-section { padding-block: 0; }
+    .strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .strength { min-height: 190px; padding: 28px; background: var(--paper); }
+    .strength-number { color: var(--green); font-family: var(--serif); font-size: 14px; }
+    .strength h3 { margin: 27px 0 8px; font-family: var(--serif); font-size: 21px; font-weight: 500; }
+    .strength p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .skills-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 48px; }
+    .skills-intro { color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .skill-group { display: grid; grid-template-columns: 145px 1fr; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+    .skill-group h3 { margin: 3px 0 0; font-size: 12px; font-weight: 600; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-list span { padding: 8px 11px; border: 1px solid var(--line); border-radius: 99px; color: #4c5a52; font-size: 11px; }
+    .contact-section { background: var(--ink); color: var(--white); }
+    .contact-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+    .contact-section .section-kicker { color: var(--lime); }
+    .contact-section h2 { max-width: 650px; margin: 16px 0; font-family: var(--serif); font-size: clamp(40px, 6vw, 68px); font-weight: 500; line-height: 1.18; }
+    .contact-section p { color: #bbc6bd; font-size: 13px; line-height: 1.8; }
+    .contact-links { display: grid; gap: 12px; min-width: 210px; }
+    .contact-links a { width: fit-content; color: #e5eddf; font-size: 13px; text-decoration-color: #66776d; text-underline-offset: 5px; }
+    .contact-links a:hover { color: var(--lime); }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; border-top: 1px solid #45564e; color: #9ba99f; font-size: 10px; letter-spacing: .05em; }
+    :focus-visible { outline: 3px solid #839744; outline-offset: 4px; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 40px, 560px); }
+      .topbar { height: 72px; }
+      nav { gap: 16px; }
+      nav a:not(.nav-contact) { display: none; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 45px; padding-block: 58px 56px; }
+      .hero h1 { font-size: clamp(58px, 16vw, 80px); }
+      .hero-visual { width: min(100% - 18px, 420px); justify-self: center; }
+      .hero-visual img { height: min(112vw, 470px); }
+      .intro-item { padding-right: 10px; }
+      .intro-item + .intro-item { padding-left: 14px; }
+      .intro-item strong { font-size: 19px; }
+      .intro-item span { font-size: 9px; line-height: 1.6; }
+      section.content-section { padding-block: 74px; }
+      .section-heading { grid-template-columns: 1fr; gap: 8px; margin-bottom: 30px; }
+      .section-heading p { margin-top: 8px; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-info { padding: 32px 25px; }
+      .project-art { min-height: 270px; }
+      .timeline-row { grid-template-columns: 1fr 22px; gap: 9px 18px; padding: 22px 0; }
+      .timeline-date { grid-column: 1; }
+      .timeline-row > div:nth-child(2) { grid-column: 1; }
+      .timeline-mark { grid-column: 2; grid-row: 1 / span 2; }
+      .experience-section .shell { padding-block: 74px; }
+      .strength-grid { grid-template-columns: 1fr; }
+      .strength { min-height: 0; padding: 24px; }
+      .strength h3 { margin-top: 18px; }
+      .skills-layout { grid-template-columns: 1fr; gap: 18px; }
+      .skill-group { grid-template-columns: 100px 1fr; gap: 12px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 24px; }
+      .contact-links { gap: 14px; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="wordmark" href="#top">黃柏諺<span>PO-YEN HUANG</span></a>
+      <nav aria-label="主要導覽">
+        <a href="#about">關於</a>
+        <a href="#work">專案</a>
+        <a href="#experience">經歷</a>
+        <a class="nav-contact" href="#contact">聯絡我 ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="about" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">Information × Insight × Impact</div>
+          <h1 id="hero-title">黃柏諺<span>Po-Yen (Brian) Huang</span></h1>
+          <p class="hero-copy">
+            我是資訊管理背景的數據分析愛好者，喜歡從資料與使用者需求出發，
+            把複雜問題梳理成清楚、實用的解決方案。相信好的分析，不只解讀現況，也能帶來下一步行動。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">看看我的專案 <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="assets/po-yen-huang-resume.pdf" target="_blank" rel="noreferrer">檢視履歷 ↗</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/profile.jpg" alt="黃柏諺個人照片">
+          <div class="image-caption"><span>PO-YEN HUANG</span><span>TAIPEI, TAIWAN</span></div>
+        </div>
+      </section>
+
+      <div class="intro-strip" aria-label="個人亮點">
+        <div class="intro-item"><strong>資訊管理</strong><span>國立彰化師範大學</span></div>
+        <div class="intro-item"><strong>11 / 58</strong><span>系排名 · 前 18.9%</span></div>
+        <div class="intro-item"><strong>TOEIC 815</strong><span>Google Analytics 認證</span></div>
+      </div>
+
+      <section class="content-section" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div><div class="section-kicker">Selected work · 01</div><h2 id="work-title">把資訊，<br>變成體驗。</h2></div>
+          <p>結合情境感知資料、開放資料與線上評論，打造以使用者需求為核心的智慧推薦服務。</p>
+        </div>
+        <article class="project-card">
+          <div class="project-info">
+            <div class="project-meta">ACADEMIC PROJECT · 2025</div>
+            <h3>情境感知智慧餐廳推薦 APP</h3>
+            <p>以彰化車站周邊為情境，整合 Open Data 與網路評論，依據使用者偏好推薦餐廳，並規劃個人化的旅遊路線。</p>
+            <div class="project-tags" aria-label="專案技能">
+              <span>後端開發</span><span>網路爬蟲</span><span>資料前處理</span><span>資料庫設計</span>
+            </div>
+          </div>
+          <div class="project-art" aria-label="個人化餐廳路線示意圖">
+            <div class="map-card">
+              <span class="map-label">SMART RECOMMENDATION</span>
+              <strong>彰化散步地圖</strong>
+              <div class="map-line">
+                <svg viewBox="0 0 190 78" fill="none" aria-hidden="true">
+                  <path d="M11 62C35 60 31 23 60 25S87 65 110 50 129 13 151 19s17 29 28 20" stroke="#315e4d" stroke-width="2" stroke-dasharray="4 4"/>
+                  <circle cx="11" cy="62" r="5" fill="#315e4d"/><circle cx="61" cy="25" r="5" fill="#d5e47a" stroke="#315e4d" stroke-width="2"/>
+                  <circle cx="110" cy="50" r="5" fill="#d5e47a" stroke="#315e4d" stroke-width="2"/><circle cx="179" cy="39" r="5" fill="#315e4d"/>
+                </svg>
+              </div>
+              <div class="map-foot"><span>依偏好推薦</span><span>探索附近美食 ↗</span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <section class="experience-section content-section" id="experience" aria-labelledby="experience-title">
+    <div class="shell">
+      <div class="section-heading">
+        <div><div class="section-kicker">The path so far</div><h2 id="experience-title">學習與經歷</h2></div>
+        <p>跨領域的學習歷程，讓我能用技術、分析與溝通的不同視角理解問題。</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-row">
+          <div class="timeline-date">2024 — 2026</div>
+          <div><h3>國立彰化師範大學｜資訊管理學系</h3><p>資訊管理學士。修習大數據分析、資料庫管理、管理資訊系統、系統分析與設計。</p></div>
+          <span class="timeline-mark" aria-hidden="true">↗</span>
+        </article>
+        <article class="timeline-row">
+          <div class="timeline-date">2022 — 2024</div>
+          <div><h3>東吳大學｜資料科學系</h3><p>修習資料分析、互動設計、網頁程式與資訊安全，建立資料與技術基礎。</p></div>
+          <span class="timeline-mark" aria-hidden="true">↗</span>
+        </article>
+        <article class="timeline-row">
+          <div class="timeline-date">2023 — 2024</div>
+          <div><h3>線性代數教學助理</h3><p>協助課程與作業批改，陪伴同學釐清觀念，也擔任師生間的溝通橋梁。</p></div>
+          <span class="timeline-mark" aria-hidden="true">↗</span>
+        </article>
+        <article class="timeline-row">
+          <div class="timeline-date">持續累積</div>
+          <div><h3>數學一對一家教</h3><p>依照學習狀況調整講解方式，將複雜概念拆解成容易理解的步驟。</p></div>
+          <span class="timeline-mark" aria-hidden="true">↗</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section class="content-section" aria-labelledby="approach-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">How I think</div><h2 id="approach-title">我的工作方式</h2></div>
+        <p>從理解問題開始，用資料與協作找到方向，讓洞察真正落地。</p>
+      </div>
+      <div class="strength-grid">
+        <article class="strength"><div class="strength-number">01 / DISCOVER</div><h3>先理解，再分析</h3><p>從情境、使用者與目標切入，定義真正值得解決的問題。</p></article>
+        <article class="strength"><div class="strength-number">02 / CONNECT</div><h3>讓資料說得通</h3><p>整理多元資料來源，建立可靠基礎，從訊號中找出脈絡。</p></article>
+        <article class="strength"><div class="strength-number">03 / DELIVER</div><h3>把洞察化為行動</h3><p>重視清楚溝通與實際應用，讓分析成為下一步的起點。</p></article>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="skills-title">
+      <div class="skills-layout">
+        <div>
+          <div class="section-kicker">Toolkit</div>
+          <h2 id="skills-title" style="margin:10px 0 15px;font-family:var(--serif);font-size:46px;font-weight:500">工具與技能</h2>
+          <p class="skills-intro">在分析、開發與內容工具之間靈活切換，持續擴充自己的工具箱。</p>
+        </div>
+        <div>
+          <div class="skill-group"><h3>程式與資料</h3><div class="skill-list"><span>Python</span><span>SQL</span><span>C++</span><span>Java</span><span>HTML</span><span>網路爬蟲</span></div></div>
+          <div class="skill-group"><h3>分析與商業</h3><div class="skill-list"><span>Excel</span><span>Tableau</span><span>ERP</span><span>Google Analytics</span></div></div>
+          <div class="skill-group"><h3>系統與創作</h3><div class="skill-list"><span>Unix / Ubuntu</span><span>Unity</span><span>Blender</span><span>GameMaker</span></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="shell">
+      <div class="content-section contact-inner">
+        <div>
+          <div class="section-kicker">Let's connect</div>
+          <h2 id="contact-title">一起把好點子，<br>做成有用的事。</h2>
+          <p>歡迎交流數據分析、產品專案與實習合作機會。</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:huangbrian0908@gmail.com">huangbrian0908@gmail.com ↗</a>
+          <a href="tel:+886961585681">+886 961 585 681 ↗</a>
+          <a href="https://www.linkedin.com/in/brianhuang0908" target="_blank" rel="noreferrer">LinkedIn 個人檔案 ↗</a>
+        </div>
+      </div>
+      <footer><span>© 2026 黃柏諺 Po-Yen Huang</span><span>用好奇心提問，用資料找答案。</span></footer>
+    </div>
+  </section>
+</body>
+</html>
